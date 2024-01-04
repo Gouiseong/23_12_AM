@@ -11,8 +11,7 @@ public class MemberController extends Controller {
 	private List<Member> members;
 	private Scanner sc;
 	private String cmd;
-	
-	
+
 	int lastMemberId = 3;
 
 	public MemberController(Scanner sc) {
@@ -28,17 +27,9 @@ public class MemberController extends Controller {
 			doJoin();
 			break;
 		case "login":
-			if (isLogined()) {
-				System.out.println("이미 로그인 상태야");
-				return;
-			}
 			doLogin();
 			break;
 		case "logout":
-			if (!isLogined()) {
-				System.out.println("이미 로그아웃 상태야");
-				return;
-			}
 			doLogout();
 			break;
 		default:
@@ -57,7 +48,7 @@ public class MemberController extends Controller {
 		// 얘 있나? -> 사용자가 입력한 로그인 아이디랑 일치하는 회원이 나한테 있나?
 
 		Member member = getMemberByLoginId(loginId);
-		
+
 		if (member == null) {
 			System.out.println("일치하는 회원이 없어");
 			return;
@@ -71,7 +62,7 @@ public class MemberController extends Controller {
 		loginedMember = member;
 
 		System.out.printf("로그인 성공! %s님 반갑습니다.\n", member.getName());
-		
+
 	}
 
 	private void doLogout() {
@@ -147,5 +138,4 @@ public class MemberController extends Controller {
 		members.add(new Member(3, Util.getNowDate_TimeStr(), "test2", "test2", "회원2"));
 	}
 
-	
 }
